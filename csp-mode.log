@@ -1,0 +1,189 @@
+This is pdfTeX, Version 3.14159-13d (Web2C 7.3.1) (format=pdftex 2001.3.25)  1 JAN 2002 21:47
+**/home/rscholz/el/csp-mode/csp-mode.texi
+(/home/rscholz/el/csp-mode/csp-mode.texi[/usr/share/texmf/pdftex/config/pdftex.
+cfg]
+Babel <v3.6x> and hyphenation patterns for american, french, german, ngerman, n
+ohyphenation, loaded.
+(/usr/share/texmf/pdftex/texinfo/texinfo.tex
+(/usr/share/texmf/pdftex/texinfo/pdftexinfo.tex
+Loading texinfo [version 1999-03-26.17]:
+(/usr/share/texmf/pdftex/plain/misc/pdfcolor.tex) Basics,
+\bindingoffset=\dimen16
+\normaloffset=\dimen17
+\pagewidth=\dimen18
+\pageheight=\dimen19
+\outerhsize=\dimen20
+\outervsize=\dimen21
+\cornerlong=\dimen22
+\cornerthick=\dimen23
+\topandbottommargin=\dimen24
+\headlinebox=\box16
+\footlinebox=\box17
+\margin=\insert252
+\EMsimple=\toks12
+\singlespaceskip=\skip18
+\groupinvalidhelp=\toks13
+\mil=\dimen25
+\exdentamount=\skip19
+\inmarginspacing=\skip20
+ fonts,
+\sffam=\fam8
+\mainmagstep=\count26
+\fontdepth=\count27
+
+page headings,
+\titlepagetopglue=\skip21
+\titlepagebottomglue=\skip22
+\evenheadline=\toks14
+\oddheadline=\toks15
+\evenfootline=\toks16
+\oddfootline=\toks17
+ tables,
+\tableindent=\dimen26
+\itemindent=\dimen27
+\itemmargin=\dimen28
+\itemmax=\dimen29
+\itemno=\count28
+\multitableparskip=\skip23
+\multitableparindent=\skip24
+\multitablecolspace=\dimen30
+\multitablelinespace=\skip25
+\colcount=\count29
+ conditionals, indexing,
+\toksA=\toks18
+\toksB=\toks19
+\toksC=\toks20
+\toksD=\toks21
+\countA=\count30
+\boxA=\box18
+\secondaryindent=\skip26
+\partialpage=\box19
+\doublecolumnhsize=\dimen31
+ sectioning,
+\chapno=\count31
+\secno=\count32
+\subsecno=\count33
+\subsubsecno=\count34
+\appendixno=\count35
+\absseclevel=\count36
+\secbase=\count37
+\chapheadingskip=\skip27
+\secheadingskip=\skip28
+\subsecheadingskip=\skip29
+ toc,
+\tocfile=\write0
+\contentsrightmargin=\skip30
+\savepageno=\count38
+\lastnegativepageno=\count39
+\tempnum=\count40
+ PDF outlines,
+(csp-mode.toc) (csp-mode.toc)
+\shortappendixwidth=\dimen32
+\tocindent=\dimen33
+ environments,
+\dblarrowbox=\box20
+\longdblarrowbox=\box21
+\pushcharbox=\box22
+\bullbox=\box23
+\equivbox=\box24
+\errorbox=\box25
+\lispnarrowing=\skip31
+\envskipamount=\skip32
+\circthick=\dimen34
+\cartouter=\dimen35
+\cartinner=\dimen36
+\normbskip=\skip33
+\normpskip=\skip34
+\normlskip=\skip35
+\lskip=\skip36
+\rskip=\skip37
+ defuns,
+\defbodyindent=\skip38
+\defargsindent=\skip39
+\deftypemargin=\skip40
+\deflastargmargin=\skip41
+\parencount=\count41
+ macros,
+\macscribble=\write1
+\paramno=\count42
+\macname=\toks22
+ cross references,
+\auxfile=\write2
+\@savsk=\dimen37
+\@savsf=\count43
+\filename=\toks23
+\filenamelength=\count44
+\footnoteno=\count45
+
+(/usr/share/texmf/tex/plain/dvips/epsf.tex
+\epsffilein=\read0
+\epsfframemargin=\dimen38
+\epsfframethickness=\dimen39
+\epsfrsize=\dimen40
+\epsftmp=\dimen41
+\epsftsize=\dimen42
+\epsfxsize=\dimen43
+\epsfysize=\dimen44
+\pspoints=\dimen45
+\epsfnoopenhelp=\toks24
+)
+\noepsfhelp=\toks25
+ localization,
+\nolanghelp=\toks26
+\defaultparindent=\dimen46
+
+and turning on texinfo input format.)) (csp-mode.aux)
+@cpindfile=@write3
+@fnindfile=@write4
+@vrindfile=@write5
+@tpindfile=@write6
+@kyindfile=@write7
+@pgindfile=@write8
+ [1
+\openout2 = `csp-mode.aux'.
+
+\openout3 = `csp-mode.cp'.
+
+\openout4 = `csp-mode.fn'.
+
+\openout5 = `csp-mode.vr'.
+
+\openout6 = `csp-mode.tp'.
+
+\openout7 = `csp-mode.ky'.
+
+\openout8 = `csp-mode.pg'.
+
+[/usr/share/texmf/dvips/config/pdftex.map]] Chapter 1
+Warning (ext1): destination with the same identifier (name{1@}) already exists!
+
+\onepageout ...fdest name {\mkpgn {\the \pageno }}
+                                                   xyz}}\advancepageno \ifnu...
+<output> {\onepageout {\pagecontents \PAGE }
+                                            }
+<to be read again> 
+                   \footnoteno 
+\supereject ->\par \penalty -20000\footnoteno 
+                                              =0 
+\chapmacro #1#2->\pchapsepmacro 
+                                {\chapfonts \rm \def \chapnum {#2}\setbox 0 ...
+
+\chapterzzz ...pno }\chapmacro {#1}{\the \chapno }
+                                                  \gdef \thissection {#1}\gd...
+...
+l.89 @chapter Introduction
+                           [1]
+\openout0 = `csp-mode.toc'.
+
+ Chapter 2 [2] Chapter 3 [3] Chapter 4 [4]
+[5] ) 
+Here is how much of TeX's memory you used:
+ 1401 strings out of 12654
+ 15021 string characters out of 466977
+ 36727 words of memory out of 263001
+ 2382 multiletter control sequences out of 10000+0
+ 30088 words of font info for 104 fonts, out of 400000 for 1000
+ 19 hyphenation exceptions out of 1000
+ 12i,4n,10p,286b,250s stack positions out of 300i,100n,500p,50000b,4000s
+<cmsy10.pfb><cmtt10.pfb><cmr10.pfb><cmbx12.pfb>
+Output written on csp-mode.pdf (6 pages, 52325 bytes).

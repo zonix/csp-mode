@@ -1,0 +1,5 @@
+\chapentry{Introduction}{1}{2}
+\secentry{History}{1}{1}{2}
+\chapentry{Commands and keybindings}{2}{3}
+\chapentry{Customizing}{3}{4}
+\chapentry{Bugs}{4}{5}
