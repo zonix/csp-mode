@@ -9,7 +9,7 @@
 ;;                  Raymond Scholz  <rscholz@tzi.de>
 ;;
 ;; Maintainer:      Raymond Scholz  <rscholz@zonix.de>
-;; 
+;;
 ;; Version: 1.0.2
 ;; Keywords: CSP, specification, formal methods
 
@@ -39,6 +39,12 @@
 ;;
 
 ;; See INSTALL for installation instructions.
+
+;;; Code:
+
+(defgroup csp-mode nil
+  "Major mode for editing CSP code."
+  :group 'languages)
 
 (defvar csp-mode-abbrev-table nil
   "Abbrev table in use in csp-mode buffers.")
@@ -74,7 +80,7 @@
 
 (defvar csp-keywords
   '("STOP" "SKIP" "CHAOS" "if" "then" "else" "channel" "datatype"
-    "nametype" "let" "ldot" "lambda" "within" "and" "or" "not" 
+    "nametype" "let" "ldot" "lambda" "within" "and" "or" "not"
     "transparent" "true" "false"))
 
 ;;;
@@ -82,8 +88,8 @@
 ;;;
 (defconst csp-symbol-re      "\\<[a-zA-Z_][a-zA-Z_0-9.!?,_]*'*\\>")
 (defconst csp-name-re "\\<\\([a-zA-Z][a-zA-Z_0-9_]*'*\\([ \t]*([ \ta-zA-Z0-9_\\+\\-\\*/%&|'().]+\\(,[ \ta-zA-Z0-9_\\+\\-\\*/%&|'().]+\\)*)\\)?\\)")
-(defconst csp-declaration-re 
-  (concat "^[ \t]*\\(\\<\\(channel\\|datatype\\|nametype\\|transparent\\)\\>\\|" 
+(defconst csp-declaration-re
+  (concat "^[ \t]*\\(\\<\\(channel\\|datatype\\|nametype\\|transparent\\)\\>\\|"
 	  csp-name-re "[ \t]*\\(\\(=[^=]\\)\\|:\\)\\)"))
 (defconst csp-defun-re       (concat "^[ \t]*" csp-name-re "[ \t]*=[^=]"))
 (defconst csp-assert-re   "[ \t]*\\<\\(assert\\)\\>")
@@ -104,7 +110,7 @@
   (setq csp-mode-syntax-table (make-syntax-table))
   (modify-syntax-entry ?\\ "."     csp-mode-syntax-table)
   (modify-syntax-entry ?/ "."      csp-mode-syntax-table)
-  (modify-syntax-entry ?( "()"     csp-mode-syntax-table)  
+  (modify-syntax-entry ?( "()"     csp-mode-syntax-table)
   (modify-syntax-entry ?) ")("     csp-mode-syntax-table)
   (modify-syntax-entry ?* "."      csp-mode-syntax-table)
   (modify-syntax-entry ?{ "(} 1"   csp-mode-syntax-table)
@@ -126,12 +132,12 @@
   (modify-syntax-entry ?\n "> b"   csp-mode-syntax-table))
 
 
-(setq csp-font-lock-keywords-1
+(defvar csp-font-lock-keywords-1
       (list
        (cons "\\<\\(assert\\|channel\\|datatype\\|nametype\\|transparent\\|[Ii]nter\\|[Uu]nion\\|diff\\|card\\)\\>" 'font-lock-type-face)
        (cons "{-\\(\\([^-]*\\)\\|\\(-+[^-}]+\\)\\)*-}" 'font-lock-comment-face)))
 
-(setq csp-font-lock-keywords-2
+(defvar csp-font-lock-keywords-2
       (append csp-font-lock-keywords-1
 	      (list
 	       (cons (concat csp-sub-block-re "\\|\\<if\\>\\|"
@@ -142,44 +148,53 @@
 		     'font-lock-function-name-face)
 	       (cons csp-defun-re '(1 'font-lock-function-name-face)))))
 
-(setq csp-font-lock-keywords-3
+(defvar csp-font-lock-keywords-3
       (append csp-font-lock-keywords-2
 	      (list
 	       (cons "\\[\\([TF]\\|FD\\)=" 'font-lock-reference-face)
 	       (cons csp-op-re 'font-lock-reference-face)
 	       (cons "\\<[a-zA-Z0-9_]\\(\\([a-zA-Z0-9.!?,_]*'+\\)\\|\\([a-zA-Z0-9.!?,_]*[a-zA-Z0-9!?,_]\\)\\)?\\>\\(\\.\\.?\\)\\<[a-zA-Z0-9_][a-zA-Z_0-9.!?,_]*'*\\>" '(4 'font-lock-reference-face)))))
 
-(setq csp-font-lock-keywords csp-font-lock-keywords-2)
+(defvar csp-font-lock-keywords csp-font-lock-keywords-2)
 
-(defvar csp-indent-level 4
-  "*Indentation of csp statements with respect to containing block.")
+(defcustom csp-indent-level 4
+  "*Indentation of csp statements with respect to containing block."
+  :group 'csp-mode)
 
-(defvar csp-untabify t
-  "*Non-nil means each TAB in csp mode will be converted into spaces.")
+(defcustom csp-untabify t
+  "*Non-nil means each TAB in csp mode will be converted into spaces."
+  :group 'csp-mode)
 
-(defvar csp-auto-newline nil
-  "*Non-nil means automatically newline after semicolons and the punctuation
-mark after an end.")
+(defcustom csp-auto-newline nil
+  "*Non-nil means automatically newline after semicolons and the punctuation mark after an end."
+  :group 'csp-mode)
 
-(defvar csp-tab-always-indent t
+(defcustom csp-tab-always-indent t
   "*Non-nil means TAB in csp mode should always reindent the current line,
-regardless of where in the line point is when the TAB command is used.")
+regardless of where in the line point is when the TAB command is used."
+  :group 'csp-mode)
 
-(defvar csp-validate-error-regexps
+(defcustom csp-validate-error-regexps
   '(("\\(error\\|warning\\) at \\([^,]+\\), line \\([0-9]+\\)" 2 3))
-  "Alist of regexps to recognize error messages from csp-validate.")
+  "Alist of regexps to recognize error messages from csp-validate."
+  :group 'csp-mode)
 
-(defvar csp-offer-save t
-  "*If non-nil, ask about saving modified buffers before \\[csp-validate] is run.")
+(defcustom csp-offer-save t
+  "*If non-nil, ask about saving modified buffers before \\[csp-validate] is run."
+  :group 'csp-mode)
 
-(defvar csp-validate-command
+(defcustom csp-validate-command
   "csp_parser"
   "*The command to validate buffer.
 The file name of current buffer's file will be appended to this,
-separated by a space.")
+separated by a space."
+  :group 'csp-mode)
 
-(defvar csp-saved-validate-command nil
-  "The command last used to validate in this buffer.")
+
+(defcustom csp-saved-validate-command nil
+  "The command last used to validate in this buffer."
+  :group 'csp-mode)
+
 
 ;;;
 ;;;  Macros
@@ -302,7 +317,7 @@ no args, if that value is non-nil."
 	  (forward-line 1))
       (skip-chars-forward " \t")
       (while (looking-at "--")
-	(delete-backward-char -2)
+	(delete-char 2)
 	(forward-line 1)
 	(skip-chars-forward " \t")))))
 
@@ -374,7 +389,7 @@ column number the line should be indented to."
 	    ind)
 
 	(goto-char stpos)
-	;; Indent lines 
+	;; Indent lines
 	(if arg
 	    (while (<= (point) (marker-position edpos))
 	      (beginning-of-line)
@@ -453,7 +468,7 @@ column number the line should be indented to."
 					  (throw 'p res)))))))))
     (cond (thenpos (if elsepos
 		       (if (> thenpos elsepos)
-			   (setq re "\\<then\\>" ps thenpos) 
+			   (setq re "\\<then\\>" ps thenpos)
 			 (setq re "\\<else\\>" ps elsepos))
 		     (setq re "\\<then\\>" ps thenpos)))
 	  (elsepos (setq re "\\<else\\>" ps elsepos))) ;thenpos must be nil !
@@ -529,7 +544,7 @@ Return a list of two elements: (INDENT-TYPE INDENT-LEVEL)."
 			   )))))
 
       ;; Return type of block and indent level.
-      (if (> par 0)                               ; Unclosed Parenthesis 
+      (if (> par 0)                               ; Unclosed Parenthesis
 	  (list 'contexp par)
 	(if (> nest 0)
 	    (progn
@@ -554,9 +569,8 @@ and move to the line in the CSP program that caused it."
   (setq csp-saved-validate-command command)
   (if csp-offer-save
       (save-some-buffers nil nil))
-  (compile-internal command "No more errors" "CSP validation"
-		    nil
-		    csp-validate-error-regexps))
+  (compilation-start command nil (lambda (mode-name) "*CSP validation*")
+                     csp-validate-error-regexps))
 
 (defun electric-csp-tab ()
   "Function called when TAB is pressed in csp mode."
@@ -589,13 +603,13 @@ and move to the line in the CSP program that caused it."
 (defun electric-csp-semi ()
   "Insert `;' reindent the line."
   (interactive)
-  (insert last-command-char)
+  (insert last-command-event)
   (save-excursion
       (beginning-of-line)
       (csp-indent-line))
   (if csp-auto-newline
       (electric-csp-terminate-line)))
-  
+
 (defun electric-csp-arrow ()
   "Insert ` ->' reindent the line."
   (interactive)
@@ -615,22 +629,22 @@ and move to the line in the CSP program that caused it."
       (setq ie (concat " " s)))
     (forward-char 1)
   (insert ie)))
-  
+
 (defun electric-csp-external-choice ()
   "Insert `[]' at current position."
   (interactive)
   (csp-generic-insert-op "[] "))
-  
+
 (defun electric-csp-internal-choice ()
   "Insert `|~|' at current position."
   (interactive)
   (csp-generic-insert-op "|~| "))
-  
+
 (defun electric-csp-interleave ()
   "Insert `|||' at current position."
   (interactive)
   (csp-generic-insert-op "||| "))
-  
+
 (defun electric-csp-sync ()
   "Insert `[|  |]' at current position."
   (interactive)
@@ -650,10 +664,10 @@ and move to the line in the CSP program that caused it."
   (backward-char 4))
 
 ;; assign csp-mode to some file extension
-(setq auto-mode-alist 
-      (append '(("\\.csp$" . csp-mode)
-		("\\.fdr.?$" . csp-mode))
-	      auto-mode-alist))
+;;;###autoload
+(progn
+  (add-to-list 'auto-mode-alist '("\\.csp$" . csp-mode))
+  (add-to-list 'auto-mode-alist '("\\.fdr.?$" . csp-mode)))
 
 (provide 'csp-mode)
 
