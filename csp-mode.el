@@ -664,10 +664,10 @@ and move to the line in the CSP program that caused it."
   (backward-char 4))
 
 ;; assign csp-mode to some file extension
-(setq auto-mode-alist
-      (append '(("\\.csp$" . csp-mode)
-		("\\.fdr.?$" . csp-mode))
-	      auto-mode-alist))
+;;;###autoload
+(progn
+  (add-to-list 'auto-mode-alist '("\\.csp$" . csp-mode))
+  (add-to-list 'auto-mode-alist '("\\.fdr.?$" . csp-mode)))
 
 (provide 'csp-mode)
 
